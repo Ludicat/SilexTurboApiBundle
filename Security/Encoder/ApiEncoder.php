@@ -2,16 +2,14 @@
 /**
  * @licence Proprietary
  */
-namespace Auth\HttpApiBundle\Security\Encoder;
-
-use Devolicious\SilexTurboApiBundle\Security\Encoder\ApiEncoder as BaseEncoder;
+namespace Devolicious\SilexTurboApiBundle\Security\Encoder;
 
 /**
  * Class ApiEncoder
  *
  * @author Joseph LEMOINE <j.lemoine@ludi.cat>
  */
-class ApiEncoder extends BaseEncoder
+class ApiEncoder 
 {
     /**
      * @param string $username
@@ -24,7 +22,7 @@ class ApiEncoder extends BaseEncoder
     {
         $day = new \DateTime();
         if (0 !== $days) {
-            $day->modify(sprintf('%d day', $day));
+            $day->modify(sprintf('%d day', $days));
         }
         
         return md5(strtolower($username).$day->format('d-m-Y').$apiKey);
